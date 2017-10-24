@@ -20,3 +20,5 @@ Emitter.prototype.emit = function(type, ...args) {
     });
   }
 };
+
+module.exports = { Emitter };
