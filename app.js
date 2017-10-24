@@ -3,15 +3,18 @@
 */
 
 // Require builtin EventEmitter module
-const EventEmitter = require('events');
+const EventEmitter = require("events");
+
+// Require config object
+const { EVENT, GREET, LEAVE } = require("./config");
 
 var sampleEmitter = new EventEmitter();
 
 // Add Event Listener
-sampleEmitter.on('event', name => console.log(`Hello, ${name}`));
+sampleEmitter.on(EVENT, name => console.log(`Hello, ${name}`));
 
 // Trigger Event
-sampleEmitter.emit('event', 'Brandon');
+sampleEmitter.emit(EVENT, "Brandon");
 
 /*
   How it works...
@@ -44,12 +47,12 @@ var MyEventEmitter = {
 };
 
 var anotherEmitter = Object.create(MyEventEmitter);
-anotherEmitter.on('greet', (greeting, person) =>
+anotherEmitter.on(GREET, (greeting, person) =>
   console.log(`${greeting}, ${person}`)
 );
-anotherEmitter.emit('greet', 'Greetings', 'Human');
+anotherEmitter.emit(GREET, "Greetings", "Human");
 
-anotherEmitter.on('leave', () => {
-  console.log('Goodbye!');
+anotherEmitter.on(LEAVE, () => {
+  console.log("Goodbye!");
 });
-anotherEmitter.emit('leave');
+anotherEmitter.emit(LEAVE);
